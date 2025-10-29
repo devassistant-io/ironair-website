@@ -1,17 +1,16 @@
 'use client'
 
 import { useEffect } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 export function Analytics() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
 
   useEffect(() => {
     // Google Analytics 4
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('config', process.env.NEXT_PUBLIC_GA_ID, {
-        page_path: pathname + searchParams.toString(),
+        page_path: pathname,
       })
     }
 
@@ -24,7 +23,7 @@ export function Analytics() {
     if (typeof window !== 'undefined' && (window as any).clarity) {
       (window as any).clarity('set', 'page', pathname)
     }
-  }, [pathname, searchParams])
+  }, [pathname])
 
   return (
     <>

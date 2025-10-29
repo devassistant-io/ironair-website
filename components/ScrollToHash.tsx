@@ -8,7 +8,7 @@ export default function ScrollToHash() {
 
   useEffect(() => {
     // Check if there's a hash in the URL
-    if (window.location.hash) {
+    if (typeof window !== 'undefined' && window.location.hash) {
       const hash = window.location.hash.substring(1) // Remove the #
       
       // Wait a bit for the page to load

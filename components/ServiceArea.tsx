@@ -2,9 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { MapPin, Phone } from 'lucide-react'
-import { useEffect, useRef } from 'react'
-import L from 'leaflet'
-import 'leaflet/dist/leaflet.css'
+import { useEffect, useRef, useState } from 'react'
 
 const serviceCities = [
   { name: 'Hamilton', lat: 43.2557, lng: -79.8711 },
@@ -28,45 +26,62 @@ const serviceCities = [
 
 export default function ServiceArea() {
   const mapRef = useRef<HTMLDivElement>(null)
-  const leafletMapRef = useRef<L.Map | null>(null)
+  const leafletMapRef = useRef<any | null>(null)
+  const [leafletLoaded, setLeafletLoaded] = useState(false)
 
   useEffect(() => {
-    if (!mapRef.current || leafletMapRef.current) return
+    if (!mapRef.current || leafletMapRef.current || leafletLoaded) return
 
-    // Initialize Leaflet map
-    const map = L.map(mapRef.current).setView([43.2557, -79.5000], 9)
+    // Dynamically import Leaflet
+    import('leaflet').then((L) => {
+      setLeafletLoaded(true)
 
-    // Add OpenStreetMap tiles (free, no API key needed)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors',
-      maxZoom: 18,
-    }).addTo(map)
+      // Dynamically load Leaflet CSS
+      if (typeof document !== 'undefined' && !document.getElementById('leaflet-css')) {
+        const link = document.createElement('link')
+        link.id = 'leaflet-css'
+        link.rel = 'stylesheet'
+        link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
+        link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY='
+        link.crossOrigin = ''
+        document.head.appendChild(link)
+      }
 
-    leafletMapRef.current = map
+      // Initialize Leaflet map
+      const map = L.default.map(mapRef.current!).setView([43.2557, -79.5000], 9)
 
-    // Custom red marker icon
-    const redIcon = L.divIcon({
-      className: 'custom-red-marker',
-      html: '<div style="background-color: #dc2626; width: 16px; height: 16px; border-radius: 50%; border: 3px solid #991b1b;"></div>',
-      iconSize: [16, 16],
-      iconAnchor: [8, 8],
-    })
-
-    // Add markers and circles for each city
-    serviceCities.forEach(city => {
-      // Add marker
-      L.marker([city.lat, city.lng], { icon: redIcon })
-        .bindPopup(`<strong>${city.name}</strong>`)
-        .addTo(map)
-
-      // Add red circle around city
-      L.circle([city.lat, city.lng], {
-        color: '#dc2626',
-        fillColor: '#dc2626',
-        fillOpacity: 0.15,
-        radius: 8000, // 8km radius
-        weight: 2,
+      // Add OpenStreetMap tiles (free, no API key needed)
+      L.default.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 18,
       }).addTo(map)
+
+      leafletMapRef.current = map
+
+      // Custom red marker icon
+      const redIcon = L.default.divIcon({
+        className: 'custom-red-marker',
+        html: '<div style="background-color: #dc2626; width: 16px; height: 16px; border-radius: 50%; border: 3px solid #991b1b;"></div>',
+        iconSize: [16, 16],
+        iconAnchor: [8, 8],
+      })
+
+      // Add markers and circles for each city
+      serviceCities.forEach(city => {
+        // Add marker
+        L.default.marker([city.lat, city.lng], { icon: redIcon })
+          .bindPopup(`<strong>${city.name}</strong>`)
+          .addTo(map)
+
+        // Add red circle around city
+        L.default.circle([city.lat, city.lng], {
+          color: '#dc2626',
+          fillColor: '#dc2626',
+          fillOpacity: 0.15,
+          radius: 8000, // 8km radius
+          weight: 2,
+        }).addTo(map)
+      })
     })
 
     // Cleanup
@@ -76,7 +91,7 @@ export default function ServiceArea() {
         leafletMapRef.current = null
       }
     }
-  }, [])
+  }, [leafletLoaded])
 
   return (
     <section id="service-area" className="py-20 bg-white relative z-0">
