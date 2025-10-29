@@ -1,0 +1,336 @@
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { ArrowRight, CheckCircle2, Phone, Snowflake, Wrench, Calendar, Shield, Droplets, Wind, ChevronDown } from 'lucide-react'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import ContactFormModal from '@/components/ContactFormModal'
+
+const features = [
+  {
+    icon: Snowflake,
+    title: 'AC Installation',
+    description: 'Professional installation of central air conditioners, properly sized for efficient cooling and comfort.',
+  },
+  {
+    icon: Wrench,
+    title: 'AC Repair',
+    description: 'Expert diagnosis and repair of all AC problems. Fast service to restore your cooling quickly.',
+  },
+  {
+    icon: Calendar,
+    title: 'Annual Tune-Ups',
+    description: 'Preventive maintenance to ensure peak efficiency, prevent breakdowns, and extend system life.',
+  },
+  {
+    icon: Shield,
+    title: 'System Upgrades',
+    description: 'Replace old, inefficient units with modern high-efficiency systems that save on energy costs.',
+  },
+  {
+    icon: Droplets,
+    title: 'Refrigerant Service',
+    description: 'Proper refrigerant charging and leak detection to maintain cooling performance.',
+  },
+  {
+    icon: Wind,
+    title: 'Emergency Cooling',
+    description: 'Available for urgent AC failures. We respond quickly to restore your comfort.',
+  },
+]
+
+const benefits = [
+  'Certified AC technicians with extensive training',
+  'Transparent pricing provided upfront',
+  'Fast response times for cooling emergencies',
+  'Energy-efficient systems that reduce utility bills',
+  'Quality parts and workmanship guaranteed',
+  'Flexible scheduling to fit your needs',
+  'Thorough system testing and optimization',
+]
+
+const faqs = [
+  {
+    question: 'How often should I service my air conditioner?',
+    answer: 'We recommend servicing your AC unit at least once a year, preferably in spring before the cooling season. Regular maintenance improves efficiency, prevents breakdowns, and extends the life of your system.'
+  },
+  {
+    question: 'Why is my AC not cooling properly?',
+    answer: 'Common causes include low refrigerant, dirty filters, frozen coils, or compressor issues. Our technicians can diagnose the problem and provide effective solutions to restore proper cooling.'
+  },
+  {
+    question: 'How long does an air conditioner typically last?',
+    answer: 'With proper maintenance, a quality air conditioner can last 15-20 years. Regular servicing, timely repairs, and keeping the unit clean significantly extend its lifespan.'
+  },
+  {
+    question: 'What SEER rating should I look for?',
+    answer: 'We recommend a minimum SEER rating of 14-16 for optimal efficiency. Higher SEER ratings mean better energy efficiency and lower operating costs, though initial investment is higher.'
+  },
+  {
+    question: 'Can I install a new AC myself?',
+    answer: 'AC installation requires specialized knowledge, tools, and licensing. Professional installation ensures proper sizing, refrigerant handling, electrical connections, and warranty validity. We always recommend professional installation.'
+  },
+  {
+    question: 'How can I reduce my cooling costs?',
+    answer: 'Regular maintenance, programmable thermostats, proper insulation, sealing air leaks, and upgrading to an energy-efficient unit can significantly reduce cooling costs. Our team can assess your home and recommend cost-saving solutions.'
+  }
+]
+
+export default function AirConditioningContent() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
+
+  return (
+    <main className="min-h-screen">
+      <Header />
+      <ContactFormModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)}
+        defaultService="Air Conditioning"
+      />
+      
+      {/* Hero Section - Dark & Cinematic */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=1920&q=80"
+            alt="Air Conditioning Service"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50"></div>
+        </div>
+
+        {/* Content */}
+        <div className="container-custom relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <div className="inline-flex items-center gap-2 bg-primary-600/20 border border-primary-500/30 px-4 py-2 rounded-full mb-6 mx-auto">
+              <Snowflake className="w-4 h-4 text-primary-400" />
+              <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider">
+                Cooling Solutions
+              </span>
+            </div>
+            
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              Air Conditioning
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto">
+              Complete air conditioning services to keep you cool and comfortable during the hottest months.
+            </p>
+            
+            <div className="flex flex-wrap gap-4 justify-center">
+              <button
+                onClick={() => setIsContactModalOpen(true)}
+                className="group relative overflow-hidden bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+              >
+                Schedule AC Service
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <a
+                href="tel:365-888-5854"
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border-2 border-white px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 inline-flex items-center gap-2"
+              >
+                <Phone className="w-5 h-5" />
+                (365) 888-5854
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-20 bg-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-iron-900 mb-4">
+              What We Offer<span className="text-primary-600">.</span>
+            </h2>
+            <div className="w-20 h-1.5 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto"></div>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, idx) => {
+              const Icon = feature.icon
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="group relative bg-gradient-to-br from-white to-iron-50 p-8 rounded-2xl border border-iron-200 hover:border-primary-600 transition-all duration-300 hover:shadow-xl"
+                >
+                  {/* Subtle Glow on Hover */}
+                  <div className="absolute -inset-px bg-gradient-to-r from-primary-600/0 via-primary-600/10 to-secondary-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10"></div>
+                  
+                  <div className="w-14 h-14 bg-gradient-to-br from-primary-600 to-primary-700 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                    <Icon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-iron-900 mb-3 group-hover:text-primary-600 transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-iron-600 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-20 bg-gradient-to-br from-iron-50 via-white to-iron-50">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-iron-900 mb-8">
+                Why Choose Us<span className="text-primary-600">.</span>
+              </h2>
+              <div className="space-y-5">
+                {benefits.map((benefit, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex items-start gap-4 group"
+                  >
+                    <div className="w-6 h-6 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-transform">
+                      <CheckCircle2 className="w-4 h-4 text-white" />
+                    </div>
+                    <p className="text-lg text-iron-700 group-hover:text-primary-600 transition-colors">{benefit}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1604754742629-3e5728249d73?w=800&q=80"
+                alt="AC Technician at Work"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-iron-900 mb-4">
+              Frequently Asked Questions<span className="text-primary-600">.</span>
+            </h2>
+            <p className="text-xl text-iron-600 max-w-2xl mx-auto">
+              Get answers to common questions about air conditioning services
+            </p>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-gradient-to-br from-white to-iron-50 border border-iron-200 rounded-2xl overflow-hidden"
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
+                  className="w-full flex items-center justify-between p-6 text-left hover:bg-iron-50/50 transition-colors"
+                >
+                  <span className="text-lg font-bold text-iron-900 pr-4">{faq.question}</span>
+                  <ChevronDown 
+                    className={`w-6 h-6 text-primary-600 flex-shrink-0 transition-transform ${
+                      openFaqIndex === idx ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                {openFaqIndex === idx && (
+                  <div className="px-6 pb-6">
+                    <p className="text-iron-600 leading-relaxed">{faq.answer}</p>
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-iron-900 via-iron-800 to-iron-900 text-white relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-primary-600 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary-600 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container-custom relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Ready to Get Started<span className="text-primary-400">?</span>
+            </h2>
+            <p className="text-xl text-iron-300 mb-10">
+              Contact us today for a free consultation and quote. Our team is ready to help keep you cool all summer.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button
+                onClick={() => setIsContactModalOpen(true)}
+                className="group relative overflow-hidden bg-white hover:bg-iron-50 text-iron-900 px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+              >
+                Get Free Quote
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <a
+                href="tel:365-888-5854"
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border-2 border-white px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 inline-flex items-center gap-2"
+              >
+                <Phone className="w-5 h-5" />
+                Call Now
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  )
+}
+
