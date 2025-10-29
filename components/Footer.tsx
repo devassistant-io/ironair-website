@@ -66,7 +66,6 @@ export default function Footer() {
             <h4 className="font-semibold text-lg mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {[
-                { label: 'About Us', href: '/#about' },
                 { label: 'Reviews', href: '/#reviews' },
                 { label: 'Service Area', href: '/#service-area' },
                 { label: 'Contact Us', href: '/#contact' },
