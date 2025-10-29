@@ -75,14 +75,14 @@ export default function Header({ forceScrolled = false }: { forceScrolled?: bool
             {/* Logo */}
             <motion.a
               href="/"
-              className="flex items-center gap-1.5 flex-shrink-0"
+              className="flex items-center gap-0.5 md:gap-1.5 flex-shrink-0"
               whileHover={{ scale: 1.02 }}
             >
               <div className="relative">
                 <img 
                   src="/logo.avif" 
                   alt="Iron Air HC Logo" 
-                  className="w-24 h-24 object-contain"
+                  className="w-28 h-28 md:w-24 md:h-24 object-contain"
                 />
               </div>
               <div>
