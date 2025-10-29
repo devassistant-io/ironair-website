@@ -20,7 +20,7 @@ export function middleware(request: NextRequest) {
     `
       default-src 'self';
       script-src 'self' 'unsafe-eval' 'unsafe-inline' *.google-analytics.com *.googletagmanager.com *.facebook.net *.clarity.ms *.linkedin.com;
-      style-src 'self' 'unsafe-inline' fonts.googleapis.com;
+      style-src 'self' 'unsafe-inline' fonts.googleapis.com unpkg.com;
       font-src 'self' fonts.gstatic.com;
       img-src 'self' data: blob: *.google-analytics.com *.googletagmanager.com *.facebook.com *.doubleclick.net https://fonts.googleapis.com https://*.tile.openstreetmap.org https://images.unsplash.com;
       connect-src 'self' *.google-analytics.com *.analytics.google.com *.googletagmanager.com *.facebook.com *.clarity.ms https://fonts.googleapis.com;

@@ -228,22 +228,41 @@ export default function Header({ forceScrolled = false }: { forceScrolled?: bool
               transition={{ duration: 0.3 }}
             >
               <div className="container-custom py-6 space-y-4">
-                <a href="/#services" className="block py-3 text-iron-700 hover:text-primary-600 font-medium text-lg">
+                <a 
+                  href="/#services" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block py-3 text-iron-700 hover:text-primary-600 font-medium text-lg"
+                >
                   Services
                 </a>
-                <a href="/#service-area" className="block py-3 text-iron-700 hover:text-primary-600 font-medium text-lg">
+                <a 
+                  href="/#service-area" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block py-3 text-iron-700 hover:text-primary-600 font-medium text-lg"
+                >
                   Service Area
                 </a>
-                <a href="/#reviews" className="block py-3 text-iron-700 hover:text-primary-600 font-medium text-lg">
+                <a 
+                  href="/#reviews" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block py-3 text-iron-700 hover:text-primary-600 font-medium text-lg"
+                >
                   Reviews
                 </a>
-                <a href="/#contact" className="block py-3 text-iron-700 hover:text-primary-600 font-medium text-lg">
+                <a 
+                  href="/#contact" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block py-3 text-iron-700 hover:text-primary-600 font-medium text-lg"
+                >
                   Contact
                 </a>
                 <div className="pt-2 space-y-3 border-t border-iron-200">
                   <a 
                     href="tel:365-888-5854"
-                    onClick={() => trackConversion.phoneClick()}
+                    onClick={() => {
+                      trackConversion.phoneClick()
+                      setIsMobileMenuOpen(false)
+                    }}
                     className="flex items-center justify-center gap-2 w-full py-3 bg-primary-50 text-primary-600 font-semibold rounded-lg"
                   >
                     <Phone className="w-5 h-5" />
@@ -251,7 +270,10 @@ export default function Header({ forceScrolled = false }: { forceScrolled?: bool
                   </a>
                   <a 
                     href="/#contact"
-                    onClick={() => trackConversion.ctaClick('mobile_menu_quote_button')}
+                    onClick={() => {
+                      trackConversion.ctaClick('mobile_menu_quote_button')
+                      setIsMobileMenuOpen(false)
+                    }}
                     className="block w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-5 py-2.5 rounded-full transition-all duration-500 shadow-md hover:shadow-lg text-sm text-center"
                   >
                     Free Quote
