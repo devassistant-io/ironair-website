@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Phone } from 'lucide-react'
 
-const brands = ['Goodman', 'Carrier', 'Daikin', 'Bryant', 'Lennox', 'Trane', 'Rheem', 'American Standard', 'York', 'Frigidaire', 'Amana', 'Coleman']
+const brands = ['Goodman', 'Rheem', 'Daikin']
 
 const brandLogos: Record<string, string> = {
   'Goodman': '/brand-goodman.png',
@@ -99,50 +99,31 @@ export default function Hero() {
                 style={{
                   display: 'flex',
                   gap: '4rem',
-                  animation: 'infiniteBrandsCarousel 40s linear infinite',
+                  animation: 'infiniteBrandsCarousel 15s linear infinite',
                   width: 'fit-content'
                 }}
               >
-                {/* First set */}
-                {brands.map((brand, idx) => (
-                  <div 
-                    key={`set1-${idx}`} 
-                    className="flex-shrink-0 flex items-center justify-center"
-                    style={{ minWidth: '200px', height: '70px' }}
-                  >
-                    {brandLogos[brand] ? (
-                      <img 
-                        src={brandLogos[brand]} 
-                        alt={`${brand} logo`}
-                        className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-all duration-300 drop-shadow-lg"
-                      />
-                    ) : (
-                      <div className="text-xl font-bold text-white/60 hover:text-white transition-colors whitespace-nowrap">
-                        {brand}
-                      </div>
-                    )}
-                  </div>
-                ))}
-                
-                {/* Duplicate set for seamless loop */}
-                {brands.map((brand, idx) => (
-                  <div 
-                    key={`set2-${idx}`} 
-                    className="flex-shrink-0 flex items-center justify-center"
-                    style={{ minWidth: '200px', height: '70px' }}
-                  >
-                    {brandLogos[brand] ? (
-                      <img 
-                        src={brandLogos[brand]} 
-                        alt={`${brand} logo`}
-                        className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-all duration-300 drop-shadow-lg"
-                      />
-                    ) : (
-                      <div className="text-xl font-bold text-white/60 hover:text-white transition-colors whitespace-nowrap">
-                        {brand}
-                      </div>
-                    )}
-                  </div>
+                {/* Create 6 sets for seamless infinite loop */}
+                {[...Array(6)].map((_, setIndex) => (
+                  brands.map((brand, idx) => (
+                    <div 
+                      key={`set${setIndex}-${idx}`} 
+                      className="flex-shrink-0 flex items-center justify-center"
+                      style={{ minWidth: '200px', height: '70px' }}
+                    >
+                      {brandLogos[brand] ? (
+                        <img 
+                          src={brandLogos[brand]} 
+                          alt={`${brand} logo`}
+                          className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-all duration-300 drop-shadow-lg"
+                        />
+                      ) : (
+                        <div className="text-xl font-bold text-white/60 hover:text-white transition-colors whitespace-nowrap">
+                          {brand}
+                        </div>
+                      )}
+                    </div>
+                  ))
                 ))}
               </div>
             </div>
