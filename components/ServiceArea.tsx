@@ -27,28 +27,27 @@ const serviceCities = [
 export default function ServiceArea() {
   const mapRef = useRef<HTMLDivElement>(null)
   const leafletMapRef = useRef<any | null>(null)
-  const [leafletLoaded, setLeafletLoaded] = useState(false)
 
   useEffect(() => {
-    if (!mapRef.current || leafletMapRef.current || leafletLoaded) return
+    if (!mapRef.current || leafletMapRef.current) return
+
+    // Dynamically load Leaflet CSS
+    if (typeof document !== 'undefined' && !document.getElementById('leaflet-css')) {
+      const link = document.createElement('link')
+      link.id = 'leaflet-css'
+      link.rel = 'stylesheet'
+      link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
+      link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY='
+      link.crossOrigin = ''
+      document.head.appendChild(link)
+    }
 
     // Dynamically import Leaflet
     import('leaflet').then((L) => {
-      setLeafletLoaded(true)
-
-      // Dynamically load Leaflet CSS
-      if (typeof document !== 'undefined' && !document.getElementById('leaflet-css')) {
-        const link = document.createElement('link')
-        link.id = 'leaflet-css'
-        link.rel = 'stylesheet'
-        link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
-        link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY='
-        link.crossOrigin = ''
-        document.head.appendChild(link)
-      }
+      if (!mapRef.current || leafletMapRef.current) return
 
       // Initialize Leaflet map
-      const map = L.default.map(mapRef.current!).setView([43.2557, -79.5000], 9)
+      const map = L.default.map(mapRef.current).setView([43.2557, -79.5000], 9)
 
       // Add OpenStreetMap tiles (free, no API key needed)
       L.default.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -82,6 +81,8 @@ export default function ServiceArea() {
           weight: 2,
         }).addTo(map)
       })
+    }).catch((error) => {
+      console.error('Error loading Leaflet:', error)
     })
 
     // Cleanup
@@ -91,7 +92,7 @@ export default function ServiceArea() {
         leafletMapRef.current = null
       }
     }
-  }, [leafletLoaded])
+  }, [])
 
   return (
     <section id="service-area" className="py-20 bg-white relative z-0">
