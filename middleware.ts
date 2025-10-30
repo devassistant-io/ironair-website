@@ -39,11 +39,11 @@ export function middleware(request: NextRequest) {
     )
   }
 
-  // Redirect www to non-www (or vice versa)
+  // Redirect non-www to www
   const hostname = request.headers.get('host')
-  if (hostname?.startsWith('www.')) {
+  if (hostname && !hostname.startsWith('www.') && hostname.includes('ironairhc.com')) {
     return NextResponse.redirect(
-      `https://${hostname.replace('www.', '')}${request.nextUrl.pathname}`,
+      `https://www.${hostname}${request.nextUrl.pathname}${request.nextUrl.search}`,
       301
     )
   }
