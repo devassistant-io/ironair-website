@@ -13,7 +13,7 @@ export function StructuredData() {
     "description": "Professional HVAC services including installation, repair, and maintenance for residential and commercial properties. Licensed technicians with 24/7 emergency service.",
     "image": "https://ironairhc.com/logo.avif",
     "telephone": "+15551234567",
-    "email": "info@ironairhc.com",
+    "email": "ironairhc@gmail.comm",
     "priceRange": "$$",
     "paymentAccepted": ["Cash", "Credit Card", "Debit Card", "Check", "Financing"],
     "currenciesAccepted": "USD",

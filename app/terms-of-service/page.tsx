@@ -199,7 +199,7 @@ export default function TermsOfServicePage() {
 
               <h3 className="text-2xl font-semibold text-iron-900 mb-3 mt-6">Link Approval Process</h3>
               <p className="text-iron-700 leading-relaxed mb-4">
-                Other organizations wishing to link to our website should contact us via email at info@ironairhc.com with the following information:
+                Other organizations wishing to link to our website should contact us via email at ironairhc@gmail.com with the following information:
               </p>
               <ul className="list-disc pl-6 text-iron-700 space-y-2">
                 <li>Your name and organization name</li>
@@ -315,7 +315,7 @@ export default function TermsOfServicePage() {
               <div className="bg-iron-50 p-6 rounded-lg border border-iron-200">
                 <p className="text-iron-900 font-semibold mb-2">Iron Air HC (Home Comfort)</p>
                 <p className="text-iron-700">Phone: (365) 888-5854</p>
-                <p className="text-iron-700">Email: info@ironairhc.com</p>
+                <p className="text-iron-700">Email: ironairhc@gmail.com</p>
                 <p className="text-iron-700 mt-2">Available 24/7 for emergency service</p>
               </div>
             </section>

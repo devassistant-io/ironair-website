@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
             <section className="mb-10">
               <h2 className="text-3xl font-bold text-iron-900 mb-4">Our Commitment to Your Privacy</h2>
               <p className="text-iron-700 leading-relaxed mb-4">
-                At Iron Air HC (Home Comfort), we value and respect your privacy. This Privacy Policy explains how we collect, use, protect, and handle your personal information when you visit our website or use our services. If you have questions about this policy, please don't hesitate to reach out to us at info@ironairhc.com or call (365) 888-5854.
+                At Iron Air HC (Home Comfort), we value and respect your privacy. This Privacy Policy explains how we collect, use, protect, and handle your personal information when you visit our website or use our services. If you have questions about this policy, please don't hesitate to reach out to us at ironairhc@gmail.com or call (365) 888-5854.
               </p>
               <p className="text-iron-700 leading-relaxed">
                 This policy applies exclusively to information gathered through our website and digital platforms. It does not cover information collected through offline channels or other means outside our website.
@@ -148,7 +148,7 @@ export default function PrivacyPolicyPage() {
               </ul>
               
               <p className="text-iron-700 leading-relaxed mt-4">
-                To exercise any of these rights, please contact us at info@ironairhc.com. We will respond to your request within 30 days.
+                To exercise any of these rights, please contact us at ironairhc@gmail.com. We will respond to your request within 30 days.
               </p>
             </section>
 
@@ -181,7 +181,7 @@ export default function PrivacyPolicyPage() {
               <div className="bg-iron-50 p-6 rounded-lg border border-iron-200">
                 <p className="text-iron-900 font-semibold mb-2">Iron Air HC (Home Comfort)</p>
                 <p className="text-iron-700">Phone: (365) 888-5854</p>
-                <p className="text-iron-700">Email: info@ironairhc.com</p>
+                <p className="text-iron-700">Email: ironairhc@gmail.com</p>
               </div>
             </section>
           </div>
