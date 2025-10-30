@@ -28,6 +28,15 @@ export function middleware(request: NextRequest) {
     `.replace(/\s+/g, ' ').trim()
   )
 
+  // Redirect non-www to www (do this first, before HTTPS redirect)
+  const hostname = request.headers.get('host')
+  if (hostname && !hostname.startsWith('www.') && hostname.includes('ironairhc.com')) {
+    return NextResponse.redirect(
+      `https://www.${hostname}${request.nextUrl.pathname}${request.nextUrl.search}`,
+      301
+    )
+  }
+
   // Force HTTPS redirect (production)
   if (
     process.env.NODE_ENV === 'production' &&
@@ -35,15 +44,6 @@ export function middleware(request: NextRequest) {
   ) {
     return NextResponse.redirect(
       `https://${request.headers.get('host')}${request.nextUrl.pathname}`,
-      301
-    )
-  }
-
-  // Redirect non-www to www
-  const hostname = request.headers.get('host')
-  if (hostname && !hostname.startsWith('www.') && hostname.includes('ironairhc.com')) {
-    return NextResponse.redirect(
-      `https://www.${hostname}${request.nextUrl.pathname}${request.nextUrl.search}`,
       301
     )
   }
