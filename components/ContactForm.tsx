@@ -96,18 +96,26 @@ export default function ContactForm() {
     try {
       trackConversion.formSubmit('contact_form')
       
-      // Simulate API call
-      await fetch('/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
-      }).catch(() => {
-        // Fail silently, form still shows success
       })
+
+      const data = await response.json()
+      
+      console.error('=== CONTACT FORM API RESPONSE ===')
+      console.error('Status:', response.status)
+      console.error('Response:', data)
+      console.error('Full Response:', response)
+      console.error('================================')
 
       setIsSubmitted(true)
     } catch (error) {
-      console.error('Form submission error:', error)
+      console.error('=== CONTACT FORM ERROR ===')
+      console.error('Error:', error)
+      console.error('Error message:', error instanceof Error ? error.message : 'Unknown error')
+      console.error('==========================')
       setIsSubmitted(true)
     }
   }

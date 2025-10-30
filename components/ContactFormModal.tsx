@@ -129,15 +129,26 @@ export default function ContactFormModal({ isOpen, onClose, defaultService }: Co
     try {
       trackConversion.formSubmit('contact_form_modal')
       
-      await fetch('/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
-      }).catch(() => {})
+      })
+
+      const data = await response.json()
+      
+      console.error('=== CONTACT MODAL API RESPONSE ===')
+      console.error('Status:', response.status)
+      console.error('Response:', data)
+      console.error('Full Response:', response)
+      console.error('==================================')
 
       setIsSubmitted(true)
     } catch (error) {
-      console.error('Form submission error:', error)
+      console.error('=== CONTACT MODAL ERROR ===')
+      console.error('Error:', error)
+      console.error('Error message:', error instanceof Error ? error.message : 'Unknown error')
+      console.error('===========================')
       setIsSubmitted(true)
     }
   }
