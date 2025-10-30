@@ -41,7 +41,6 @@ export const metadata: Metadata = {
     'energy efficient HVAC',
     'smart thermostat installation',
     'boiler repair',
-    'air duct cleaning',
     'HVAC contractor near me',
   ],
   authors: [{ name: 'Iron Air HC' }],

@@ -51,7 +51,7 @@ export default function Hero() {
                 >
                   <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight text-white">
                     Premium{' '}
-                    <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">Heating & Cooling</span>
+                    <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-secondary-400 to-primary-400">Heating & Cooling</span>
                   </h1>
                   <p className="text-2xl md:text-3xl text-white/90 max-w-3xl mx-auto font-light">
                     Expert HVAC solutions for your home and business.

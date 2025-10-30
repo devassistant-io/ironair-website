@@ -59,7 +59,7 @@ const services = [
   {
     icon: Wrench,
     title: 'Ductwork',
-    description: 'Cleaning, sealing & repair',
+    description: 'Sealing, repair & installation',
     href: '/services/ductwork',
   },
   {

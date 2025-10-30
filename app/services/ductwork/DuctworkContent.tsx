@@ -9,11 +9,6 @@ import ContactFormModal from '@/components/ContactFormModal'
 
 const features = [
   {
-    icon: Wind,
-    title: 'Duct Cleaning',
-    description: 'Thorough cleaning to remove dust, debris, and contaminants from your ductwork system.',
-  },
-  {
     icon: Shield,
     title: 'Duct Sealing',
     description: 'Seal leaks and gaps to prevent air loss, improve efficiency, and reduce energy bills.',
@@ -80,10 +75,6 @@ const warningSignsData = [
 
 const faqs = [
   {
-    question: 'How often should ductwork be cleaned?',
-    answer: 'We recommend professional duct cleaning every 3-5 years, or more frequently if you have pets, allergies, recent renovations, or notice excessive dust. Regular cleaning improves air quality and system efficiency while reducing allergens and contaminants circulating in your home.'
-  },
-  {
     question: 'What are signs of leaky ductwork?',
     answer: 'Common signs include high energy bills, uneven temperatures between rooms, excessive dust, difficulty maintaining comfortable temperatures, and whistling sounds from vents. Leaky ducts can waste 20-30% of your conditioned air, significantly impacting comfort and costs.'
   },
@@ -92,16 +83,12 @@ const faqs = [
     answer: 'Most duct sealing projects take 4-8 hours depending on the size of your home and extent of leaks. We use professional-grade sealants and techniques to ensure long-lasting results. The investment typically pays for itself through energy savings within a few years.'
   },
   {
-    question: 'Is duct cleaning worth it?',
-    answer: 'Yes! Professional duct cleaning removes years of accumulated dust, allergens, and contaminants. It improves indoor air quality, system efficiency, and can reduce allergy symptoms. It\'s especially beneficial for homes with pets, smokers, or family members with respiratory issues.'
-  },
-  {
     question: 'Can damaged ductwork affect my HVAC system?',
     answer: 'Absolutely. Damaged or leaky ductwork forces your HVAC system to work harder to maintain temperatures, leading to increased wear, higher energy bills, and potential premature failure. Proper ductwork is essential for optimal system performance and longevity.'
   },
   {
     question: 'Do you work with existing ductwork or only new installations?',
-    answer: 'We handle both! Our services include cleaning, repairing, sealing, and modifying existing ductwork, as well as complete new installations for additions, renovations, or system replacements. We assess your current system and recommend the most cost-effective solution.'
+    answer: 'We handle both! Our services include repairing, sealing, and modifying existing ductwork, as well as complete new installations for additions, renovations, or system replacements. We assess your current system and recommend the most cost-effective solution.'
   }
 ]
 
@@ -358,7 +345,7 @@ export default function DuctworkContent() {
               Ready to Optimize Your Airflow<span className="text-primary-400">?</span>
             </h2>
             <p className="text-xl text-iron-300 mb-10">
-              Contact us today for professional ductwork inspection, cleaning, sealing, or repair services.
+              Contact us today for professional ductwork inspection, sealing, or repair services.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <button
