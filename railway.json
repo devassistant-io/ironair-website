@@ -6,7 +6,8 @@
   },
   "deploy": {
     "numReplicas": 1,
-    "healthcheckPath": "/",
+    "healthcheckPath": "/api/health",
+    "healthcheckTimeout": 300,
     "restartPolicy": {
       "maxRetries": 10
     },
