@@ -117,6 +117,18 @@ export default function Footer() {
                 <a href="/terms-of-service" className="hover:text-primary-400 transition-colors">
                   Terms of Service
                 </a>
+                <span>|</span>
+                <span className="text-iron-500">
+                  Powered by{' '}
+                  <a 
+                    href="https://zerasoftwarestudio.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-primary-400 transition-colors"
+                  >
+                    Zera Software Studio
+                  </a>
+                </span>
               </div>
             </div>
             <div className="flex items-center gap-2">
